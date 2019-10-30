@@ -1,0 +1,14 @@
+
+<div class='category-container'>
+<% @categories.each do |category| %>  
+<div class="card">
+  <%= image_tag category.image_url, class:'card-img-top' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= category.name %></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to 'Show Products', category_path(category) %>
+  </div>
+</div>
+<% end %>
+</div>
+

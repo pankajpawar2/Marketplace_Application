@@ -1,0 +1,25 @@
+<%= @product.name %>
+<%= image_tag(@product.picture,size:'500x500') if @product.picture.attached? %>
+<h4>Comments</h4>
+
+
+<% if @product.comments != nil %>
+<% @product.comments.each do |comment| %>
+  
+  <%= comment.comment %><br>
+<% end %>
+<% end %>
+
+
+<%= form_with(model:@comment,url:products_path,local:true) do |form| %>
+  <p>
+  <%= form.label :comment %>
+  <%= form.text_field :comment %>
+  </p>
+
+  <p>
+  <%= form.submit %>
+  </p>
+  
+<% end %>
+

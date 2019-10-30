@@ -1,0 +1,31 @@
+<h2>Add new product</h2>
+<%= form_with model:@product, url: new_product_path do |form| %>
+
+  <p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  </p>
+
+  <p>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  </p>
+
+  <p>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  </p>
+
+  <p>
+  <%= form.label :picture %>
+  <%= form.file_field :picture, accept:
+  'image/png,image/gif,image/jpeg,image/jpg'%>
+  </p>
+
+  <p>
+  <%= form.label :category_id %>
+  <%= form.select :category_id, Category.all.collect{|c| [c.name,c.id]} %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
