@@ -25,22 +25,22 @@
         <div class="nav-bar-options">
             <% if user_signed_in? %>
                 <% if current_user.is_admin? %>
-                    <%= link_to "Show new products", categories_path,class:'btn btn-outline-secondary' %>
-                    <%= link_to "Add Category", categories_path,class:'btn btn-outline-secondary' %>
-                    <%= link_to "Admin Centre", categories_path,class:'btn btn-outline-secondary' %>
-                    <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-secondary' %>
+                    <%= link_to "Show new products", categories_path,class:'btn btn-outline-warning' %>
+                    <%= link_to "Add Category", categories_new_path,class:'btn btn-outline-warning' %>
+                    <%= link_to "Admin Centre", categories_path,class:'btn btn-outline-warning' %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-warning' %>
                 <% else %>
-                <%= link_to "Buy Handicraft", categories_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "Sell Your Handicraft", new_product_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "My Products Listing", user_products_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-secondary' %>
+                <%= link_to "Buy Handicraft", categories_path,class:'btn btn-outline-warning' %>
+                <%= link_to "Sell Your Handicraft", new_product_path,class:'btn btn-outline-warning' %>
+                <%= link_to "My Products Listing", user_products_path,class:'btn btn-outline-warning' %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-warning' %>
                 <% end %>
             <% else %>
-                <%= link_to "Home", root_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "For Buyers", categories_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "For Sellers", new_product_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "Sign Up", new_user_registration_path,class:'btn btn-outline-secondary' %>
-                <%= link_to "Login", new_user_session_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "Home", root_path,class:'btn btn-outline-warning' %>
+                <%= link_to "For Buyers", categories_path,class:'btn btn-outline-warning' %>
+                <%= link_to "For Sellers", new_product_path,class:'btn btn-outline-warning' %>
+                <%= link_to "Sign Up", new_user_registration_path,class:'btn btn-outline-warning' %>
+                <%= link_to "Login", new_user_session_path,class:'btn btn-outline-warning' %>
             <% end %>
          </div>
       </nav>

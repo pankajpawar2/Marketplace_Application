@@ -8,8 +8,8 @@
     <%= image_tag(product.picture,size:'260x200') if product.picture.attached? %>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <%= link_to 'View Product',products_path(product), class:'btn btn-primary' %>
-    <%= link_to 'Edit Product', edit_product_path(product), class:'btn btn-success' if current_user.id == product.user_id %>
-    <%= link_to 'Delete Product', products_path(product), method: :delete, confirm: {data:"Are you sure"}, class:'btn btn-danger' if current_user.id == product.user_id %>
+    <%= link_to 'Edit Product', edit_product_path(product), class:'btn btn-success' if current_user.id == product.user_id || current_user.is_admin? %>
+    <%= link_to 'Delete Product', products_path(product), method: :delete, confirm: {data:"Are you sure"}, class:'btn btn-danger' if current_user.id == product.user_id || current_user.is_admin? %>
   </div>
   </div>
 <% end %>

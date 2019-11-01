@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category,only: [:show]
+
   def index
     @categories = Category.all
   end
@@ -10,6 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    
     @product = Product.new
   end
 
@@ -19,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def delete
-    @product = current_user.products.find(params[:id])
+    @product = Product.find(params[:id])
     @product.destroy
   end
 
@@ -48,6 +50,17 @@ class ProductsController < ApplicationController
     render 'show_product'
   end
 
+  def new_category
+    @category = Category.new
+  end
+
+  def create_new_category
+    @category = Category.new(category_params)
+    @category.save
+    redirect_to categories_path,notice: "Category Added successfully"
+  end
+
+
   private
   def set_category
     @category = Category.find(params[:id])
@@ -59,6 +72,10 @@ class ProductsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment,:product_id)
+  end
+
+  def category_params
+    params.require(:category).permit(:name,:image_url)
   end
 
 end

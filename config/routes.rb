@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get '/categories',to:'products#index',as:'categories'
+  post '/categories',to:'products#create_new_category'
+
   get '/categories/:id',to:'products#show',as:'category'
 
   get '/products/:id',to:'products#show_product',as:'products'
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   post '/new/product',to:'products#create'
 
   get 'user/products',to:'products#show_user_product',as:'user_products'
+
+  get '/new/category',to:'products#new_category',as:'categories_new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
