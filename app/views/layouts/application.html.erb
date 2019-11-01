@@ -11,33 +11,41 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">      
-  <% if notice || alert %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% end %>
-  <% if user_signed_in? %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-secondary' %>
-  <% else %>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-            <%= link_to "Buy Handicraft", categories_path %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "Sell Your Handicraft", new_product_path %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "Login", new_user_session_path %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-  </nav>
+    <div class="page-container">
+
+      <nav class="top-nav-bar">
+
+        <div class="nav-bar-notice">
+            <% if notice || alert %>
+            <p class="notice"><h5><%= notice %></h5></p>
+            <p class="alert"><h4><%= alert %></h4></p>
+            <% end %>   
+        </div>
+
+        <div class="nav-bar-options">
+            <% if user_signed_in? %>
+                <% if current_user.is_admin? %>
+                    <%= link_to "Show new products", categories_path,class:'btn btn-outline-secondary' %>
+                    <%= link_to "Add Category", categories_path,class:'btn btn-outline-secondary' %>
+                    <%= link_to "Admin Centre", categories_path,class:'btn btn-outline-secondary' %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-secondary' %>
+                <% else %>
+                <%= link_to "Buy Handicraft", categories_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "Sell Your Handicraft", new_product_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "My Products Listing", user_products_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'btn btn-outline-secondary' %>
+                <% end %>
+            <% else %>
+                <%= link_to "Home", root_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "For Buyers", categories_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "For Sellers", new_product_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "Sign Up", new_user_registration_path,class:'btn btn-outline-secondary' %>
+                <%= link_to "Login", new_user_session_path,class:'btn btn-outline-secondary' %>
+            <% end %>
+         </div>
+      </nav>
   <%= yield %>
+  </div>
   </body>
 </html>
 

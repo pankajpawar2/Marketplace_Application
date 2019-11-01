@@ -1,25 +1,41 @@
-<%= @product.name %>
-<%= image_tag(@product.picture,size:'500x500') if @product.picture.attached? %>
-<h4>Comments</h4>
+<div class="show-product">
+    <div class="show-product-image">
+        <%= image_tag(@product.picture,size:'500x500') if @product.picture.attached? %>
+    </div>
+
+    <div class="show-product-content">
+    <h2>Product Information:</h2>
+    <h5>Name: <%= @product.name %></h5>
+    <h5>Price: <%= @product.price %></h5> 
+    </div>
+
+    <div class="show-product-comments">
+    <h4>Comments</h4>
+
+    
+    <% if @product.comments != nil %>
+      
+    Posted On:
+
+    <% @product.comments.each do |comment| %>
+      <%= comment.created_at %><br>
+      <%= comment.comment %><%= link_to "Delete comment",root_path if current_user.is_admin? %>
+    <% end %>
+    <% end %>
 
 
-<% if @product.comments != nil %>
-<% @product.comments.each do |comment| %>
-  
-  <%= comment.comment %><br>
-<% end %>
-<% end %>
+    <%= form_with(model:@comment,url:products_path,local:true) do |form| %>
+      <p>
+      <%= form.label :comment %>
+      <%= form.text_field :comment %>
+      </p>
 
-
-<%= form_with(model:@comment,url:products_path,local:true) do |form| %>
-  <p>
-  <%= form.label :comment %>
-  <%= form.text_field :comment %>
-  </p>
-
-  <p>
-  <%= form.submit %>
-  </p>
-  
-<% end %>
+      <p>
+      <%= form.submit %>
+      </p>
+      
+    <% end %>
+  </div>
+    
+</div>
 

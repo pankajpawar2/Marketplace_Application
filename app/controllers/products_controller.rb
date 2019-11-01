@@ -23,9 +23,23 @@ class ProductsController < ApplicationController
     @product.destroy
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to products_path,notice: "Product updated"
+  end
+
   def show_product
     @product = Product.find(params[:id])
     @comment = @product.comments.new
+  end
+
+  def show_user_product
+    @products = current_user.products
   end
 
   def new_comment

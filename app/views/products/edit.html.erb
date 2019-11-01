@@ -1,0 +1,36 @@
+<div class="new-product">
+<h1>Edit product</h1>
+
+<%= form_with model:@product, url: products_path do |form| %>
+  <div class="new-product-form">
+  <p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  </p>
+
+  <p>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  </p>
+
+  <p>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  </p>
+
+  <p>
+  <%= form.label :category_id %>
+  <%= form.select :category_id, Category.all.collect{|c| [c.name,c.id]} %>
+  </p>
+
+  <p>
+  <%= form.label :picture %>
+  <%= form.file_field :picture, accept:
+  'image/png,image/gif,image/jpeg,image/jpg'%>
+  </p>
+
+  <%= form.submit %>
+  </div>
+<% end %>
+
+</div>

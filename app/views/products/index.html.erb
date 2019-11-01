@@ -1,14 +1,29 @@
 
 <div class='category-container'>
-<% @categories.each do |category| %>  
-<div class="card">
-  <%= image_tag category.image_url, class:'card-img-top' %>
-  <div class="card-body">
-    <h5 class="card-title"><%= category.name %></h5>
-    <p class="card-text">Quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <%= link_to 'Show Products', category_path(category) %>
-  </div>
-</div>
-<% end %>
+
+    <div class="left-section-category">
+        <h3>Browse by Categories</h3>
+        <% @categories.each do |category| %>  
+        <p>
+        <%= link_to category.name.upcase, category_path(category) %>
+        </p>
+        <% end %>
+    </div>
+
+    <div class="right-section-category">
+        <% @categories.each do |category| %>  
+        <div class="category-list">
+              <div class="category-list-image">
+              <%= image_tag(category.image_url,size:"200x200") %>
+              </div>
+              <div class="category-content">
+                <h4><%= category.name.upcase %></h4>
+                <p class="card-text">Quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5><%= link_to 'Show Products', category_path(category) %></h5>
+              </div>
+        </div>
+        <% end %>
+    </div>
+
 </div>
 

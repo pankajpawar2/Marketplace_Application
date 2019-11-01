@@ -15,39 +15,122 @@
  */
 * {
   box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+  background-image: url('background.jpg');
+  background-position: center;
+  background-size: cover;
+  
 }
 
 .page-container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
-  background: url('background.jpg');
-  background-position: center;
-  background-size: cover;
-  opacity: 90%;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-nav-bar {
+  flex: 1;
+  display: flex;
+  background: #f0697b;
+}
+
+.nav-bar-notice {
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  height: 100vh;
-  padding-left: 20px;
+}
+
+.nav-bar-options {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.welcome-page, .login-page, .signup-page, .new-product {
+  display: flex;
+  flex: 6;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
 }
 
 .category-container {
   display: flex;
-  flex-wrap: wrap;
+  flex: 6;
+}
+
+.left-section-category {
+  font-size: 15px;
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.card {
-  width: 300px;
-  height: 530px;
+.right-section-category {
+  flex: 4;
+  display: flex;
+}
+
+.category-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin: 5px;
-  background: #009688
+  border: 2px solid rgb(230, 108, 108);
+  padding: 5px;
 }
 
-.nav-item {
-  margin-left: 140px;
+.category-list-image {
+  
+  margin-bottom: 5px;
+  
 }
 
-.card-img-top {
-  height: 350px;
+.new-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
 }
+
+.show-product {
+  display: flex;
+  flex: 6;
+  height: 100%;
+}
+
+.show-product-image {
+  flex: 1;
+  height: 100%;
+}
+
+.show-product-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-product-comments {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+
+
+

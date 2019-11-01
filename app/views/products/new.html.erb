@@ -1,6 +1,8 @@
-<h2>Add new product</h2>
-<%= form_with model:@product, url: new_product_path do |form| %>
+<div class="new-product">
+<h1>Add new product</h1>
 
+<%= form_with model:@product, url: new_product_path do |form| %>
+  <div class="new-product-form">
   <p>
   <%= form.label :name %>
   <%= form.text_field :name %>
@@ -17,15 +19,18 @@
   </p>
 
   <p>
+  <%= form.label :category_id %>
+  <%= form.select :category_id, Category.all.collect{|c| [c.name,c.id]} %>
+  </p>
+
+  <p>
   <%= form.label :picture %>
   <%= form.file_field :picture, accept:
   'image/png,image/gif,image/jpeg,image/jpg'%>
   </p>
 
-  <p>
-  <%= form.label :category_id %>
-  <%= form.select :category_id, Category.all.collect{|c| [c.name,c.id]} %>
-  </p>
-
   <%= form.submit %>
+  </div>
 <% end %>
+
+</div>
