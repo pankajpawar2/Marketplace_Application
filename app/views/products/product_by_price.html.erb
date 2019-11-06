@@ -1,5 +1,5 @@
 <div class="show-user-product">
-<% @products.each do |product| %>
+<% @product1.each do |product| %>
   <div class="show-user-product-card">
   <h5>Name:</h3><%= product.name %>
   <%= image_tag(product.picture,size:'200x200') if product.picture.attached? %>

@@ -22,5 +22,10 @@ Rails.application.routes.draw do
 
   get '/new/category',to:'products#new_category',as:'categories_new'
 
+  get '/product/:price',to:'products#product_by_price',as:'product_by_price'
+  # stripe
+
+  get "/payments/success", to: "payments#success"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

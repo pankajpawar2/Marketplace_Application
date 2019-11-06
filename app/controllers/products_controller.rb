@@ -7,11 +7,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = @category.products
+    @products = @category.products.all
   end
 
   def new
-    
     @product = Product.new
   end
 
@@ -60,6 +59,15 @@ class ProductsController < ApplicationController
     redirect_to categories_path,notice: "Category Added successfully"
   end
 
+  def success
+
+  end
+
+  def product_by_price
+    
+    @product1 = Product.where("price < ?",400)
+    
+  end
 
   private
   def set_category

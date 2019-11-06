@@ -1,7 +1,11 @@
 <div class="welcome-page">
-  <h1>Welcome to Online Store</h1>
-  <p>
-    <%= link_to "Buy Products", categories_path,class:'btn btn-primary btn-lg' %>
-    <%= link_to "Sell Products", new_product_path,class:'btn btn-primary btn-lg' %>
-  </p>
+  
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a marketplace, for buying or selling handicrafts.</p>
+  <hr class="my-4">
+  <p>You need to be a registered user to start using this site.</p>
+  <%= link_to "Start Browsing", categories_path, class:"btn btn-primary btn-lg" %>
+</div>
+
 </div>

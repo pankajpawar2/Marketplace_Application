@@ -24,71 +24,12 @@
   height: 100vh;
 }
 
-.top-nav-bar {
-  flex: 1;
+.login-page, .signup-page, .new-product {
   display: flex;
-  background: #6386e7;
-}
-
-.nav-bar-notice {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-bar-options {
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-}
-
-.welcome-page, .login-page, .signup-page, .new-product {
-  display: flex;
-  flex: 6;
+  flex: 12;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-}
-
-.category-container {
-  display: flex;
-  flex: 6;
-}
-
-.left-section-category {
-  font-size: 15px;
-  flex: 1.1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.right-section-category {
-  flex: 4;
-  display: flex;
- 
-}
-
-.category-list {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 5px;
-  
-  padding: 5px;
-}
-
-.category-list-image {
-  
-  margin-bottom: 5px;
   
 }
 
@@ -99,42 +40,57 @@
   justify-content: center;
 }
 
-.show-product {
-  display: flex;
-  flex: 6;
-  height: 100%;
-}
-
-.show-product-image {
-  flex: 1;
-  height: 100%;
-}
-
-.show-product-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .show-product-comments {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+
 }
 
 .show-user-product {
   display: flex;
   flex: 6;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .show-user-product-card {
-  width: 33.3333%;
   display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
 }
 
+.card {
+  margin: 5px;
+}
 
+.navbar {
+  font-size: 18px;
+  padding-left: 50%;
+  flex: 1;
+}
 
+.welcome-page {
+  display: flex;
+  flex: 12;
+  justify-content: center;
+  align-items: center;
+}
 
+.notice-bar {
+  padding: 5px;
+  flex: 0.2;
+}
+
+.category-container {
+  display: flex;
+  flex: 12;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-page {
+  display: flex;
+  flex: 12;
+  justify-content: space-evenly;
+}
