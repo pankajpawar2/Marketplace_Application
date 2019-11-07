@@ -16,6 +16,7 @@
 * {
   box-sizing: border-box;
   font-family: Georgia, 'Times New Roman', Times, serif;
+ 
 }
 
 .page-container {
@@ -44,7 +45,7 @@
 .show-product-comments {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 
 }
 
@@ -60,9 +61,7 @@
   border: 1px solid grey;
 }
 
-.card {
-  margin: 5px;
-}
+
 
 .navbar {
   font-size: 18px;
@@ -73,24 +72,53 @@
 .welcome-page {
   display: flex;
   flex: 12;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
-.notice-bar {
-  padding: 5px;
-  flex: 0.2;
-}
+
 
 .category-container {
   display: flex;
   flex: 12;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .product-page {
   display: flex;
   flex: 12;
   justify-content: space-evenly;
+}
+
+.list-group {
+  margin-top: 5px;
+  width: 400px;
+}
+
+.edit-account-page {
+  flex: 12;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  margin: 10px;
+  height: 80vh;
+  width: 25%;
+}
+
+.card-img-top {
+  height: 60%;
+}
+
+.card-body {
+    background: rgba(197, 192, 192, 0.589);
+}
+
+.success-page {
+  flex: 12;
+  padding: 20px;
 }

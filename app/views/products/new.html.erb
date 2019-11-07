@@ -1,4 +1,9 @@
 <div class="new-product">
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <h1>Add new product</h1>
 
 <%= form_with model:@product, url: new_product_path do |form| %>

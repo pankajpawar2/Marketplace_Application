@@ -1,6 +1,6 @@
 <div class="category-container">
 <% @products.each do |product| %> 
-  <div class="card" style="width: 27rem;">
+  <div class="card" >
     <% if product.picture.attached? %>
     <%= image_tag product.picture,class:"card-img-top" %>
     <% else %>
@@ -11,7 +11,7 @@
         <p class="card-text"><%= product.description %></p>  
         <%= link_to 'View Product',products_path(product), class:'btn btn-primary' %>
         <%= link_to 'Edit Product',edit_product_path(product), class:'btn btn-warning' %>
-        <%= link_to 'Delete Product',products_path(product), method: :delete, data: {confirm: "Are you sure"}, class:'btn btn-danger' if current_user.id = product.user_id %>
+        <%= link_to 'Delete Product',products_path(product), method: :delete, data: {confirm: "Are you sure"}, class:'btn btn-danger' if current_user.id = product.user_id || current_user.is_admin? %>
       </div>
     
   </div>

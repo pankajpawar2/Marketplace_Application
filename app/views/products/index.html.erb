@@ -1,9 +1,11 @@
 
 <div class='welcome-page'>
         <% @categories.each do |category| %>  
-            <div class="card" style="width: 15rem;">
+            <div class="card" >
             <% if category.image_url? %>
             <%= image_tag category.image_url,class:"card-img-top" %>
+            <% else %>
+            <%= image_tag "default.png",class:"card-img-top" %>
             <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= category.name.capitalize %></h5>

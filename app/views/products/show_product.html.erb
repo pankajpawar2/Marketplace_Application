@@ -1,23 +1,40 @@
 <div class='product-page'>
 
-
-        <div class="card" style="width: 25rem;">
+        <div class="card" >
         <% if @product.picture.attached? %>
-            <%= image_tag(@product.picture) %>
+            <%= image_tag @product.picture,class:"card-img-top" %>
             <% else %>
-            <%= image_tag "default.png" %>
+            <%= image_tag "default.png",class:"card-img-top" %>
         <% end %>
         <div class="card-body">
             <h5 class="card-title">Name: <%= @product.name %></h5>
             <p class="card-text">Price: <%= @product.price %></p>  
-            <%= link_to 'Buy Product', root_path, class:'btn btn-primary' %>
-        </div>
-        </div>
+            <button data-stripe="payment">Buy Now <%= number_to_currency(@product.price) %></button>
 
+            <script src="https://js.stripe.com/v3/"></script>
+
+              <script>
+              document
+                .querySelector("[data-stripe='payment']")
+                .addEventListener("click", () => {
+                  const stripe = Stripe(
+                    "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+                  );
+
+                  stripe.redirectToCheckout({
+                    sessionId: "<%= @session_id %>"
+                  });
+                });
+              </script>     
+        </div>
+        </div>
 
         <div class="show-product-comments">
-        
-        <% @comments.each do |comment| %>
+        <h2>Comments</h2>
+        <% @product.comments.each_with_index do |comment,index| %>
+        <% if index == @product.comments.length-1 %>
+        <% break %>
+        <% end %>
         <div class="list-group">
         <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Comment Posted</h5>
@@ -25,6 +42,7 @@
         </div>
         <p class="mb-1"><%= comment.comment %></p>
         <small>Donec id elit non mi porta.</small>
+        ..............................................................................................
         <% end %>
 
         <%= form_with(model:@comment,url:products_path,local:true) do |form| %>

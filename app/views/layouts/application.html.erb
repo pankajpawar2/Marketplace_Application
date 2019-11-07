@@ -18,16 +18,17 @@
     <div class="navbar-nav">
     <% if user_signed_in? %>
     <% if current_user.is_admin? %>
-      <%= link_to "Show new products", categories_path,class:'nav-item nav-link' %>
+      <%= link_to "Show new products", show_new_product_path,class:'nav-item nav-link' %>
       <%= link_to "Add Category", categories_new_path,class:'nav-item nav-link' %>
       <%= link_to "Admin Centre", categories_path,class:'nav-item nav-link' %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'nav-item nav-link' %>
 
 
     <% else %>
-    <%= link_to "Buy Handicraft", categories_path,class:'nav-item nav-link' %>
-    <%= link_to "Sell Your Handicraft", new_product_path,class:'nav-item nav-link' %>
-    <%= link_to "My Products Listing", user_products_path,class:'nav-item nav-link' %>
+    <%= link_to "Buy Products", categories_path,class:'nav-item nav-link' %>
+    <%= link_to "Sell Products", new_product_path,class:'nav-item nav-link' %>
+    <%= link_to "My Listings", user_products_path,class:'nav-item nav-link' %>
+    <%= link_to "My Account", edit_user_registration_path,class:'nav-item nav-link' %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete,class:'nav-item nav-link' %>
     <% end %>    
 
@@ -41,8 +42,10 @@
   </div>
 </div>
 </nav>
-<% if notice || alert %>
+<% if notice %>
     <p class="notice"><h4><%= notice %></h4></p>
+    <% end %> 
+    <% if alert %>
     <p class="alert"><h4><%= alert %></h4></p>
 <% end %> 
   <%= yield %>

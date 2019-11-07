@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get '/new/category',to:'products#new_category',as:'categories_new'
 
   get '/product/:price',to:'products#product_by_price',as:'product_by_price'
+
+  get '/new/products',to:'products#show_new_product',as:'show_new_product'
+
+  post "/payments/webhook", to: "payments#webhook"
+
   # stripe
 
   get "/payments/success", to: "payments#success"

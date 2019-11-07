@@ -16,7 +16,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.create(product_params)
+    if @product.save
     redirect_to categories_path
+    else
+      render 'new'
+    end
   end
 
   def delete
@@ -37,6 +41,28 @@ class ProductsController < ApplicationController
   def show_product
     @product = Product.find(params[:id])
     @comment = @product.comments.new
+
+    session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        customer_email: current_user.email,
+        line_items: [{
+            name: @product.name,
+            description: @product.description,
+            amount: @product.price.to_i * 100,
+            currency: 'aud',
+            quantity: 1,
+        }],
+        payment_intent_data: {
+            metadata: {
+                user_id: current_user.id,
+                product_id: @product.id
+            }
+        },
+        success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@product.id}",
+        cancel_url: "#{root_url}products"
+    )
+
+    @session_id = session.id
   end
 
   def show_user_product
@@ -59,14 +85,8 @@ class ProductsController < ApplicationController
     redirect_to categories_path,notice: "Category Added successfully"
   end
 
-  def success
-
-  end
-
-  def product_by_price
-    
-    @product1 = Product.where("price < ?",400)
-    
+  def show_new_product
+    @products = Product.order(:created_at)
   end
 
   private
