@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post '/new/product',to:'products#create'
 
   get 'user/products',to:'products#show_user_product',as:'user_products'
+  
+  delete '/comment/:id',to:'products#delete_comment',as:'comment'
 
   get '/new/category',to:'products#new_category',as:'categories_new'
 

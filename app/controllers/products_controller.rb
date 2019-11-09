@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.create(product_params)
     if @product.save
-    redirect_to categories_path
+    redirect_to products_path(@product), notice: "Product added successfully"
     else
       render 'new'
     end
@@ -26,6 +26,13 @@ class ProductsController < ApplicationController
   def delete
     @product = Product.find(params[:id])
     @product.destroy
+    redirect_to user_products_path, notice: "Product deleted"
+  end
+
+  def delete_comment
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to products_path(@comment.product_id), notice: "Comment deleted"
   end
 
   def edit
@@ -35,7 +42,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to products_path,notice: "Product updated"
+    redirect_to user_products_path,notice: "Product updated"
   end
 
   def show_product
@@ -103,7 +110,7 @@ class ProductsController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name,:image_url)
+    params.require(:category).permit(:name,:image_url,:image)
   end
 
 end

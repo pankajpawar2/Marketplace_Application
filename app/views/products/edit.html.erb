@@ -1,5 +1,6 @@
 <div class="new-product">
 <h1>Edit product</h1>
+<% if current_user.id == @product.user_id %>
 
 <%= form_with model:@product, url: products_path do |form| %>
   <div class="new-product-form">
@@ -31,6 +32,11 @@
 
   <%= form.submit %>
   </div>
+<% end %>
+
+<% else %>
+
+<h5>You are not authorized to edit this product</h5>
 <% end %>
 
 </div>
