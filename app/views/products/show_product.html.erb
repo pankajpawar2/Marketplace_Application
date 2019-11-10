@@ -8,7 +8,7 @@
         <% end %>
         <div class="card-body">
             <h5 class="card-title">Name: <%= @product.name %></h5>
-            <p class="card-text">Price: AU $<%= @product.price %></p>  
+            <p class="card-text">Price: AU $<%= @product.price.to_i %></p>  
             <% if current_user.id != @product.user_id %>
             <button data-stripe="payment">Buy Now <%= number_to_currency(@product.price) %></button>
             <% end %>
@@ -42,7 +42,7 @@
         <small><%= comment.created_at %></small>
         </div>
         <p class="mb-1"><%= comment.comment %></p>
-        <small>Donec id elit non mi porta.</small>
+        <small>Posted by: <%= current_user.email %></small>
         <%= link_to "Delete Comment",comment_path(comment),method: :delete,data: {confirm: "Are you sure"} if current_user.is_admin? %>
         ..............................................................................................
         <% end %>

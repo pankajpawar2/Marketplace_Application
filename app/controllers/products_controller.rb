@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
   def new_comment
     @product = Product.find(params[:id])
     @comment = @product.comments.create(comment_params)
-    render 'show_product'
+    redirect_to products_path(@product), notice: "Comment added successfully"
   end
 
   def new_category
