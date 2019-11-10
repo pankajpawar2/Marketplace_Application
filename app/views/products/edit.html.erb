@@ -1,8 +1,19 @@
 <div class="new-product">
+<% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <h1>Edit product</h1>
 <% if current_user.id == @product.user_id %>
 
-<%= form_with model:@product, url: products_path do |form| %>
+<%= form_with(model:@product, url: products_path, local: true) do |form| %>
   <div class="new-product-form">
   <p>
   <%= form.label :name %>

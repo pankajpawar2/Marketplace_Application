@@ -1,21 +1,28 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category,only: [:show]
+  before_action :set_product,only: [:show_product,:edit,:update,:delete]
 
   def index
+    # Get a list of all categories
     @categories = Category.all
   end
 
   def show
+    # Get a list of all products
     @products = @category.products.all
   end
 
   def new
+    # Create an instance of new product
     @product = Product.new
   end
 
   def create
+    # Setting values for new instance of product
     @product = current_user.products.create(product_params)
+
+    #Check if there are any validation errors
     if @product.save
     redirect_to products_path(@product), notice: "Product added successfully"
     else
@@ -24,7 +31,6 @@ class ProductsController < ApplicationController
   end
 
   def delete
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to user_products_path, notice: "Product deleted"
   end
@@ -36,19 +42,22 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
+    if @product.update(product_params)
     redirect_to user_products_path,notice: "Product updated"
+    else
+      render 'edit'
+    end
   end
 
   def show_product
     @product = Product.find(params[:id])
     @comment = @product.comments.new
 
+
+    # For initiating Stripe session
     session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         customer_email: current_user.email,
@@ -101,6 +110,10 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
   def product_params
     params.require(:product).permit(:name,:description,:price,:category_id,:user_id,:picture)
   end
@@ -110,7 +123,7 @@ class ProductsController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name,:image_url,:image)
+    params.require(:category).permit(:name,:description,:image)
   end
 
 end

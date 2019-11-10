@@ -119,14 +119,37 @@
 }
 
 .card-img-top {
-  height: 60%;
+  height: 50%;
 }
 
 .card-body {
-    background: rgba(197, 192, 192, 0.589);
+    background: rgba(235, 169, 169, 0.589);
+    height: 50%;
+}
+
+.card-text {
+  font-size: 14px;
+  font-style: italic;
 }
 
 .success-page {
   flex: 12;
   padding: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .card {
+    margin: 10px;
+    height: 80vh;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+.card {
+  margin: 10px;
+  height: 90vh;
+  width: 25%;
+}
 }

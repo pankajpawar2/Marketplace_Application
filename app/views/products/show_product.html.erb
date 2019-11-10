@@ -8,7 +8,7 @@
         <% end %>
         <div class="card-body">
             <h5 class="card-title">Name: <%= @product.name %></h5>
-            <p class="card-text">Price: <%= @product.price %></p>  
+            <p class="card-text">Price: AU $<%= @product.price %></p>  
             <% if current_user.id != @product.user_id %>
             <button data-stripe="payment">Buy Now <%= number_to_currency(@product.price) %></button>
             <% end %>

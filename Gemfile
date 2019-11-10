@@ -69,3 +69,5 @@ gem "aws-sdk-s3", "~> 1.52"
 gem "ransack", "~> 2.3"
 
 gem "stripe", "~> 5.7"
+
+gem 'bootstrap-sass'
